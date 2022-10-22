@@ -1,6 +1,5 @@
 #include "binary_search.hpp"
 
-// TODO
 void binary_search(std::vector<int>& arr, int num, searchType& s){
 
     int idx = -1;
@@ -8,13 +7,18 @@ void binary_search(std::vector<int>& arr, int num, searchType& s){
     int midIdx = 0;
 
     // Size of the vector
-    int N = sizeof(arr) / sizeof(arr[0]);
+    int N = arr.size();
 
     int lowIdx = 0;
     int highIdx = N-1;
 
+    // Sort the vector
+    std::sort(arr.begin(), arr.end());
+
     while (true){
+        iter++;
         midIdx = (lowIdx + highIdx) / 2;
+        
         if (num == arr[midIdx]){
             idx = midIdx;
             break;
@@ -23,7 +27,6 @@ void binary_search(std::vector<int>& arr, int num, searchType& s){
         } else {
             highIdx = midIdx - 1;
         }
-        iter++;
         
         if (iter > N){
             break;
@@ -32,6 +35,6 @@ void binary_search(std::vector<int>& arr, int num, searchType& s){
 
     // Resulted index and iterations count
     s.idx = idx;
-    s.iter = idx;
+    s.iter = iter;
 
 }

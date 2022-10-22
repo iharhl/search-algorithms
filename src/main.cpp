@@ -1,9 +1,22 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #include "generate_list.hpp"
 #include "constants.hpp"
 #include "linear_search.hpp"
 #include "binary_search.hpp"
+
+void printOut(std::vector<int>& arr, searchType& result, std::string srch){
+    std::cout << "======================================================" << std::endl;
+    std::cout << srch << " search output: number ";
+    if (result.idx == -1){
+        std::cout << "not found in the list!" << std::endl;
+    } else {
+        std::cout << arr[result.idx] << " is found at index " << result.idx << std::endl;
+        std::cout << "Number of iterations: " << result.iter << std::endl;
+    }
+    std::cout << "======================================================" << std::endl;    
+}
 
 int main(){
 
@@ -13,38 +26,20 @@ int main(){
     // Init
     searchType result;
     int idx;
-    int num = 87;
+    int num = 99;
 
     // Generate random list
     generate_list(arr);
 
-    // Printout random array
-    // for (int i{0}; i < SIZE; i++){
-    //     std::cout << arr[i] << " ";
-    // }
-    // std::cout << std::endl;
-
     // Linear search
-    linear_search(arr, num, result);
-    if (result.idx == -1){
-        std::cout << "No such number in the list!";
-    } else {
-        std::cout << "======================================================" << std::endl;
-        std::cout << "Linear search output: number index at index " << result.idx << std::endl;
-        std::cout << "Number of iterations: " << result.iter << std::endl;
-        std::cout << "======================================================" << std::endl;
-    }
-
+    linear_search(arr, num, result);  
+    // Printout the result
+    printOut(arr, result, "Linear");
+    
     // Binary search
     binary_search(arr, num, result);
-    if (result.idx == -1){
-        std::cout << "No such number in the list!";
-    } else {
-        std::cout << "======================================================" << std::endl;
-        std::cout << "Binary search output: number index at index " << result.idx << std::endl;
-        std::cout << "Number of iterations: " << result.iter << std::endl;
-        std::cout << "======================================================" << std::endl;
-    }
+    // Prinout the result
+    printOut(arr, result, "Binary");
 
     std::cout << std::endl;
     return 0;

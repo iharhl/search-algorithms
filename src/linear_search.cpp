@@ -3,16 +3,18 @@
 void linear_search(std::vector<int>& arr, int num, searchType& s){
 
     int idx = -1;
+    int iter = 0;
 
-    for (auto i : arr){
-        if (arr[i] == num){
-            idx = i;
+    for (auto i = arr.begin(); i < arr.end(); i++){
+        iter++;
+        if (*i == num){
+            idx = *i;
             break;
         }
     }
 
     // Resulted index and iterations count
     s.idx = idx;
-    s.iter = idx;
+    s.iter = iter;
 
 }
