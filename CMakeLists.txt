@@ -7,6 +7,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(SOURCES src/main.cpp
             src/generate_list.cpp
             src/generate_list.hpp
+            src/linear_search.cpp
+            src/linear_search.hpp
+            src/binary_search.cpp
+            src/binary_search.hpp
             src/constants.hpp)
 
 add_executable(search ${SOURCES})
