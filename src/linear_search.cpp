@@ -8,7 +8,7 @@ void linear_search(std::vector<int>& arr, int num, searchType& s){
     for (auto i = arr.begin(); i < arr.end(); i++){
         iter++;
         if (*i == num){
-            idx = *i;
+            idx = --iter;
             break;
         }
     }

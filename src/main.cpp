@@ -26,18 +26,17 @@ int main(){
     // Init
     searchType result;
     int idx;
-    int num = 99;
 
     // Generate random list
     generate_list(arr);
 
     // Linear search
-    linear_search(arr, num, result);  
+    linear_search(arr, NUMBER, result);  
     // Printout the result
     printOut(arr, result, "Linear");
     
     // Binary search
-    binary_search(arr, num, result);
+    binary_search(arr, NUMBER, result);
     // Prinout the result
     printOut(arr, result, "Binary");
 

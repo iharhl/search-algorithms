@@ -15,10 +15,9 @@ void binary_search(std::vector<int>& arr, int num, searchType& s){
     // Sort the vector
     std::sort(arr.begin(), arr.end());
 
-    while (true){
+    while (iter < N){
         iter++;
         midIdx = (lowIdx + highIdx) / 2;
-        
         if (num == arr[midIdx]){
             idx = midIdx;
             break;
@@ -26,10 +25,6 @@ void binary_search(std::vector<int>& arr, int num, searchType& s){
             lowIdx = midIdx + 1;
         } else {
             highIdx = midIdx - 1;
-        }
-        
-        if (iter > N){
-            break;
         }
     }
 
