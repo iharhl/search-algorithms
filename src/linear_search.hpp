@@ -5,6 +5,6 @@
 #include <iostream>
 #include "constants.hpp"
 
-void linear_search(std::vector<int>& arr, int num, searchType& s);
+searchType linear_search(std::vector<int>& arr, int num);
 
 #endif

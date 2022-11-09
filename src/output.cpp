@@ -15,3 +15,7 @@ void printOut(std::vector<int>& arr, searchType& result, std::string srch)
     }
     std::cout << "======================================================" << std::endl;    
 }
+
+using namespace sciplot; 
+
+//Strings search_type = 0;

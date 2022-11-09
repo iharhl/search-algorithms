@@ -1,9 +1,11 @@
 #include "linear_search.hpp"
 
-void linear_search(std::vector<int>& arr, int num, searchType& s)
+searchType linear_search(std::vector<int>& arr, int num)
 {
+    // Initialization
     int idx = -1;
     int iter = 0;
+    searchType s;
 
     for (auto i = arr.begin(); i < arr.end(); i++)
     {
@@ -18,4 +20,6 @@ void linear_search(std::vector<int>& arr, int num, searchType& s)
     // Resulted index and iterations count
     s.idx = idx;
     s.iter = iter;
+
+    return s;
 }

@@ -10,35 +10,35 @@
 
 int main()
 {
-    // Array init
-    std::vector<int> arr(SIZE);
-
     // Init
-    searchType result;
+    std::vector<int> arr(SIZE);
     int idx;
 
-    // Generate random list
+    // Generate random list of numbers
     generate_list(arr);
 
     // Linear search
-    linear_search(arr, NUMBER, result);  
+    searchType result_lin = linear_search(arr, NUMBER);  
     // Printout the result
-    printOut(arr, result, "Linear");
+    printOut(arr, result_lin, "Linear");
+
+    // Sort the vector
+    std::sort(arr.begin(), arr.end());
 
     // Jump search
-    jump_search(arr, NUMBER, result);  
+    searchType result_jmp = jump_search(arr, NUMBER);  
     // Printout the result
-    printOut(arr, result, "Jump");
+    printOut(arr, result_jmp, "Jump");
     
     // Binary search
-    binary_search(arr, NUMBER, result);
+    searchType result_bin = binary_search(arr, NUMBER);
     // Prinout the result
-    printOut(arr, result, "Binary");
+    printOut(arr, result_bin, "Binary");
 
     // Ternary search
-    ternary_search(arr, NUMBER, result);
+    searchType result_ter = ternary_search(arr, NUMBER);
     // Prinout the result
-    printOut(arr, result, "Ternary");
+    printOut(arr, result_ter, "Ternary");
 
     return 0;
 }
