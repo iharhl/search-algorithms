@@ -34,6 +34,8 @@ set(SOURCES src/main.cpp
             src/ternary_search.hpp
             src/output.cpp
             src/output.hpp
-            src/constants.hpp)
+            src/constants.hpp
+            src/benchmark.cpp
+            src/benchmark.hpp)
 
 add_executable(search ${SOURCES})

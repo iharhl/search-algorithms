@@ -1,6 +1,6 @@
 #include "output.hpp"
 
-void printOut(std::vector<int>& arr, searchType result, std::string srch, std::chrono::microseconds duration)
+void printOut(std::vector<int>& arr, searchType result, std::string srch, double duration)
 {
     std::cout << "======================================================" << std::endl;
     std::cout << srch << " search output: number ";
@@ -12,7 +12,7 @@ void printOut(std::vector<int>& arr, searchType result, std::string srch, std::c
     {
         std::cout << arr[result.idx] << " is found at index " << result.idx << std::endl;
         std::cout << "Number of iterations: " << result.iter << std::endl;
-        std::cout << "Execution time in microseconds: " << duration.count() << std::endl;
+        std::cout << "Execution time in microseconds: " << duration << std::endl;
     }
     std::cout << "======================================================" << std::endl;    
 }

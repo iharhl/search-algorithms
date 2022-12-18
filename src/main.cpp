@@ -9,6 +9,7 @@
 #include "ternary_search.hpp"
 #include "jump_search.hpp"
 #include "output.hpp"
+#include "benchmark.hpp"
 
 int main()
 {
@@ -19,55 +20,70 @@ int main()
     // Generate random list of numbers
     generate_list(arr);
 
+
     //----- Linear search
-    auto start = std::chrono::high_resolution_clock::now();
 
-    searchType result_lin = linear_search(arr, NUMBER);  
-
-    auto stop = std::chrono::high_resolution_clock::now();
-    auto duration_lin = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+    searchType result_lin;
+    double duration_lin;
+    {
+        Timer time(&duration_lin);
+        result_lin = linear_search(arr, NUMBER);
+    }
 
     // Printout the result
     printOut(arr, result_lin, "Linear", duration_lin);
 
-    // Sort the vector
-    start = std::chrono::high_resolution_clock::now();
-    std::sort(arr.begin(), arr.end());
-    stop = std::chrono::high_resolution_clock::now();
-    auto duration_sort = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-    std::cout << "\nDuration of sorting the array [us]: " << duration_sort.count() << "\n" << std::endl;
+
+    //----- Sort the vector
+    double duration_sort;
+    {
+        Timer time(&duration_sort);
+        std::sort(arr.begin(), arr.end());
+    }
+    std::cout << "\nDuration of sorting the array [us]: " << duration_sort << "\n" << std::endl;
+
 
     //----- Jump search
-    start = std::chrono::high_resolution_clock::now();
 
-    searchType result_jmp = jump_search(arr, NUMBER);  
+    searchType result_jmp;
+    double duration_jmp;
 
-    stop = std::chrono::high_resolution_clock::now();
-    auto duration_jmp = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+    {
+        Timer time(&duration_jmp);
+        result_jmp = jump_search(arr, NUMBER);  
+    }
 
     // Printout the result
     printOut(arr, result_jmp, "Jump", duration_jmp);
     
+
     //----- Binary search
-    start = std::chrono::high_resolution_clock::now();
 
-    searchType result_bin = binary_search(arr, NUMBER);
+    searchType result_bin;
+    double duration_bin;
 
-    stop = std::chrono::high_resolution_clock::now();
-    auto duration_bin = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+    {
+        Timer time(&duration_bin);
+        result_bin = binary_search(arr, NUMBER);
+    }
+
     // Prinout the result
     printOut(arr, result_bin, "Binary", duration_bin);
 
+
     //----- Ternary search
-    start = std::chrono::high_resolution_clock::now();
 
-    searchType result_ter = ternary_search(arr, NUMBER);
+    searchType result_ter;
+    double duration_ter;
 
-    stop = std::chrono::high_resolution_clock::now();
-    auto duration_ter = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+    {
+        Timer time(&duration_ter);
+        result_ter = ternary_search(arr, NUMBER);
+    }
 
     // Prinout the result
     printOut(arr, result_ter, "Ternary", duration_ter);
+
 
     // Plot
     Strings search_types = {"Linear", "Jump", "Binary", "Ternary"};

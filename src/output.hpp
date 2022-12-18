@@ -8,7 +8,7 @@
 #include <sciplot/sciplot.hpp>
 #include "constants.hpp"
 
-void printOut(std::vector<int>& arr, searchType result, std::string srch, std::chrono::microseconds duration);
+void printOut(std::vector<int>& arr, searchType result, std::string srch, double duration);
 void plotOut(Strings search_types, std::vector<int> iters);
 
 #endif
