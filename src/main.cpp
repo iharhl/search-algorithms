@@ -2,6 +2,7 @@
 #include <string>
 #include <chrono>
 #include <iostream>
+#include <memory>
 #include "generate_list.hpp"
 #include "constants.hpp"
 #include "linear_search.hpp"
@@ -13,77 +14,64 @@
 
 int main()
 {
-    // Init
+    // Initialize vector
     std::vector<int> arr(SIZE);
-    int idx;
 
     // Generate random list of numbers
     generate_list(arr);
 
+    // Allocate memory for storing the duration
+    size_t duration;
 
     //----- Linear search
-
     searchType result_lin;
-    double duration_lin;
+    std::shared_ptr<size_t> duration_lin = std::make_shared<size_t>(duration);
     {
-        Timer time(&duration_lin);
+        Timer time(duration_lin);
         result_lin = linear_search(arr, NUMBER);
     }
-
     // Printout the result
-    printOut(arr, result_lin, "Linear", duration_lin);
-
+    printOut(arr, result_lin, "Linear", *duration_lin);
 
     //----- Sort the vector
-    double duration_sort;
+    std::shared_ptr<size_t> duration_sort = std::make_shared<size_t>(duration);
     {
-        Timer time(&duration_sort);
+        Timer time(duration_sort);
         std::sort(arr.begin(), arr.end());
     }
-    std::cout << "\nDuration of sorting the array [us]: " << duration_sort << "\n" << std::endl;
-
+    std::cout << "\nDuration of sorting the array [ns]: " << *duration_sort << "\n" << std::endl;
 
     //----- Jump search
-
     searchType result_jmp;
-    double duration_jmp;
-
+    std::shared_ptr<size_t> duration_jmp = std::make_shared<size_t>(duration);
     {
-        Timer time(&duration_jmp);
+        Timer time(duration_jmp);
         result_jmp = jump_search(arr, NUMBER);  
     }
-
     // Printout the result
-    printOut(arr, result_jmp, "Jump", duration_jmp);
+    printOut(arr, result_jmp, "Jump", *duration_jmp);
     
 
     //----- Binary search
-
     searchType result_bin;
-    double duration_bin;
-
+    std::shared_ptr<size_t> duration_bin = std::make_shared<size_t>(duration);
     {
-        Timer time(&duration_bin);
+        Timer time(duration_bin);
         result_bin = binary_search(arr, NUMBER);
     }
-
     // Prinout the result
-    printOut(arr, result_bin, "Binary", duration_bin);
+    printOut(arr, result_bin, "Binary", *duration_bin);
 
 
     //----- Ternary search
-
     searchType result_ter;
-    double duration_ter;
-
+    std::shared_ptr<size_t> duration_ter = std::make_shared<size_t>(duration);
     {
-        Timer time(&duration_ter);
+        Timer time(duration_ter);
         result_ter = ternary_search(arr, NUMBER);
     }
-
     // Prinout the result
-    printOut(arr, result_ter, "Ternary", duration_ter);
-
+    printOut(arr, result_ter, "Ternary", *duration_ter);
 
     // Plot
     Strings search_types = {"Linear", "Jump", "Binary", "Ternary"};

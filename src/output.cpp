@@ -12,7 +12,7 @@ void printOut(std::vector<int>& arr, searchType result, std::string srch, double
     {
         std::cout << arr[result.idx] << " is found at index " << result.idx << std::endl;
         std::cout << "Number of iterations: " << result.iter << std::endl;
-        std::cout << "Execution time in microseconds: " << duration << std::endl;
+        std::cout << "Execution time in nanoseconds: " << duration << std::endl;
     }
     std::cout << "======================================================" << std::endl;    
 }
