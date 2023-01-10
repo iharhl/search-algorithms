@@ -10,10 +10,7 @@ FetchContent_MakeAvailable(googletest)
 add_library(GTest::GTest INTERFACE IMPORTED)
 target_link_libraries(GTest::GTest INTERFACE gtest_main)
 
-add_executable(testcase testcase.cpp)
-target_link_libraries(testcase PRIVATE sourcecode GTest::GTest)
+add_executable(testsuit testsuit.cpp)
+target_link_libraries(testsuit PRIVATE sourcecode GTest::GTest)
 
-add_test(search_testcase testcase)
-
-
-
+add_test(search_test testsuit)

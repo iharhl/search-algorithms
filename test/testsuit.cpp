@@ -2,7 +2,7 @@
 #include "linear_search.hpp"
 #include "constants.hpp"
 
-TEST(LinearSearchTest, test1)
+TEST(LinearSearchTest, testcase1)
 {
     //arange
     std::vector<int> dummy_vector = {6,1,2,1,3,5};
@@ -15,7 +15,7 @@ TEST(LinearSearchTest, test1)
     ASSERT_EQ(search_target, dummy_vector[result.idx]);
 }
 
-TEST(LinearSearchTest, test2)
+TEST(LinearSearchTest, testcase2)
 {
     //arange
     std::vector<int> dummy_vector = {50,12,51,34,51,51};

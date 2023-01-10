@@ -6,7 +6,6 @@ FetchContent_Declare(sciplot_content
   GIT_REPOSITORY https://github.com/sciplot/sciplot.git
   GIT_TAG master)
 
-# FetchContent_MakeAvailable(sciplot)
 FetchContent_GetProperties(sciplot_content)
 if(NOT sciplot_content_POPULATED)
   FetchContent_Populate(sciplot_content)
@@ -14,9 +13,8 @@ endif()
 
 include_directories(${sciplot_content_SOURCE_DIR})
 
-# Make library from src files
+# Make library from src files required for testing
 add_library(sourcecode 
-    main.cpp
     generate_list.cpp
     generate_list.hpp
     linear_search.cpp
@@ -27,8 +25,13 @@ add_library(sourcecode
     binary_search.hpp
     ternary_search.cpp
     ternary_search.hpp
+    constants.hpp)
+
+# Link all the other files to create executable
+add_executable(main 
+    main.cpp
     output.cpp
     output.hpp
-    constants.hpp
     benchmark.cpp
     benchmark.hpp)
+target_link_libraries(main PRIVATE sourcecode)
